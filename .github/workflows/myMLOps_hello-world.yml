@@ -72,3 +72,4 @@ jobs:					# A workflow run is made up of one or more jobs,
         namespace: ${{secrets.OKTETO_NAMESPACE }}
         manifest: manifests/linear_model_k8s.yaml
         tag: ${{ secrets.DOCKER_USERNAME }}/tensorflow_${{secrets.MODEL_NAME}}:${{ github.sha }}
+
