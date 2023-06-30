@@ -2,35 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {model_name}
+  name: {model_name}-deployment
 spec:
   selector:
     matchLabels:
-      app: {model_name}
-  replicas: {nodos}
+      app: {model_name}-server
+  replicas: 3
   template:
     metadata:
       labels:
-        app: {model_name}
+        app: {model_name}-server
     spec:
       containers:
-      - name: {model_name}
+      - name: {model_name}-container
         #image: gcr.io/tensorflow-serving/resnet 
-        image: docker.io/{docker_user}/{model_name}:{github.sha}
+        image: docker.io/{docker_user}/tensorflow-{model_name}:{github.sha}
         ports:
-        - containerPort: 80
+        - containerPort: 8501
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: {model_name}
-  name: {model_name}
+    run: {model_name}-service
+  name: {model_name}-service
 spec:
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 8501
+    targetPort: 8501
   selector:
-    app: {model_name}
+    app: {model_name}-server
   type: LoadBalancer
  
