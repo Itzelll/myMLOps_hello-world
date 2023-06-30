@@ -1,2 +1,2 @@
-deploy:			# ¿name of the job?
+deploy:
   - kubectl apply -f manifests # create all the resources in kubernetes
