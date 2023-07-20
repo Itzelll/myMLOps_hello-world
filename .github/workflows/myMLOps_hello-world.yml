@@ -14,7 +14,7 @@ on:					# It is used to automatically trigger a workflow.
     types: [predictionjs]
     
 jobs:					
-  predictionjs:
+  build:
     runs-on: ubuntu-latest 	# The type of runner that the job will run on. 
     container: adsoft/aiops:latest # It is used to to create a container to run any
   # steps in a job that don't already specify a 
