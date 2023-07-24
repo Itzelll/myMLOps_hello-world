@@ -11,7 +11,7 @@ on:					# It is used to automatically trigger a workflow.
 # repository occurs.
     branches: [ main ]		
   repository_dispatch:
-    types: [build]
+    types: [predictionjs]
     
 jobs:					
   build:
